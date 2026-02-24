@@ -1,0 +1,6 @@
+I want to develop an application which should be compatible both web browser and mobile devices ( android and ios ). 
+The application is called "My Cultural Organisation".
+The application should have the following features.
+1. A page depicting "About Us" page with introductory content supported by events pinctures
+2. Event calendar for the whole year.
+3. Payment page to enable payment to the organisation by means of UPI, Debit Card, Credit Card, Online Bank Transfers etc. While accepting the payment, it should take following inputs: Event name from a drop down (mandatory), donor name (mandatory), contact number (optional), email (optional), "My Cultural Organisation" representative's name (optional), payment valid date. Upon successful payment, it should register event name, the transaction id along with name of the donor, "My Cultural Organisation" representative's name, amount paid, currency and payment valid date into a google online spreadsheet.
