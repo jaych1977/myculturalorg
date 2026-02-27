@@ -10,8 +10,8 @@ import {
   ActivityIndicator,
   Alert,
   Switch,
-  Picker,
 } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Colors, Typography, Spacing, DefaultEvents, PaymentMethods, Currency } from '../constants';
 import {
