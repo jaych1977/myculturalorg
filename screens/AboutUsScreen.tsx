@@ -26,7 +26,7 @@ const AboutUsScreen: React.FC = () => {
   const toggleSection = (section: string) => {
     setExpandedSection(expandedSection === section ? null : section);
   };
-
+  
   const renderSectionHeader = (
     title: string,
     sectionId: string,
