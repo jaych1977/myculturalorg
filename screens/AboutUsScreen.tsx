@@ -20,7 +20,6 @@ const isSmallScreen = width < 600;
  * About Us Screen Component
  * Displays organization information, mission, vision, and event pictures
  */
-
 const AboutUsScreen: React.FC = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>('description');
 
