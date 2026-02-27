@@ -1,4 +1,4 @@
-I want to develop an application which should be compatible both web browser and mobile devices ( android and ios ). 
+I want to develop an application in react-native language which will  be compatible both web browser and mobile devices ( android and ios ). 
 The application is called "My Cultural Organisation".
 The application should have the following features.
 1. A page depicting "About Us" page with introductory content supported by events pinctures

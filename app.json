@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "My Cultural Organisation",
+    "slug": "myculturalorg",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTabletMode": true,
+      "bundleIdentifier": "com.myculturalorg.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.myculturalorg.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "display": "standalone"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to upload event pictures.",
+          "cameraPermission": "The app uses the camera to capture event photos."
+        }
+      ]
+    ]
+  }
+}
