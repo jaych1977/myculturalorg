@@ -541,6 +541,7 @@ const styles = StyleSheet.create({
   eventMonth: {
     ...Typography.small,
     color: Colors.gray,
+    fontWeight: '400' as const,
   },
   eventLocationBadge: {
     ...Typography.small,

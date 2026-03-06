@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Platform } from 'react-native';
 import { PaymentRecord } from '../types';
 
 /**
@@ -46,8 +47,36 @@ const GOOGLE_SHEETS_CONFIG = {
  */
 export const submitPaymentToGoogleForm = async (payment: PaymentRecord): Promise<any> => {
   try {
+    // Google Forms requests can hit CORS restrictions when running in a web environment (e.g. Expo Web).
+    // In that case, we fall back to a no-cors request (which returns an opaque response) so the form can still be submitted.
+    if (Platform.OS === 'web') {
+      const params = new URLSearchParams();
+      params.append(GOOGLE_FORM_CONFIG.fields.eventName, payment.eventName);
+      params.append(GOOGLE_FORM_CONFIG.fields.donorName, payment.donorName);
+      params.append(GOOGLE_FORM_CONFIG.fields.contactNumber, payment.contactNumber || '');
+      params.append(GOOGLE_FORM_CONFIG.fields.email, payment.email || '');
+      params.append(GOOGLE_FORM_CONFIG.fields.representativeName, payment.representativeName || '');
+      params.append(GOOGLE_FORM_CONFIG.fields.transactionId, payment.transactionId);
+      params.append(GOOGLE_FORM_CONFIG.fields.amount, payment.amount.toString());
+      params.append(GOOGLE_FORM_CONFIG.fields.currency, payment.currency);
+      params.append(GOOGLE_FORM_CONFIG.fields.paymentValidDate, payment.paymentValidDate);
+      params.append(GOOGLE_FORM_CONFIG.fields.paymentMethod, payment.paymentMethod);
+
+      await fetch(GOOGLE_FORM_CONFIG.actionUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: params.toString(),
+      });
+
+      // No reliable response is available in no-cors mode.
+      return { success: true, data: null };
+    }
+
     const formData = new FormData();
-    
+
     // Add form fields (modify these entry IDs with your actual Google Form entry IDs)
     formData.append(GOOGLE_FORM_CONFIG.fields.eventName, payment.eventName);
     formData.append(GOOGLE_FORM_CONFIG.fields.donorName, payment.donorName);
